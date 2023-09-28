@@ -92,8 +92,8 @@ const cartItems =[
   ]
 
 
-  const totalPrice = cartItems.reduce(function(total, instument) {
-    return total + (producto.precio*producto.quantity);
+  const totalPrice = cartItems.reduce(function(total, instrument) {
+    return total + (instrument.precio*instrument.quantity);
   }, 0);
 
 
