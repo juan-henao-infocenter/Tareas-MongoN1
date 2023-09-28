@@ -91,10 +91,40 @@ const cartItems =[
     }
   ]
 
+  const cartContainer = document.getElementById("cart-container");
 
-  const totalPrice = cartItems.reduce(function(total, instrument) {
-    return total + (instrument.precio*instrument.quantity);
-  }, 0);
+    // Itera a través de los elementos del carrito y crea el contenido HTML
+    cartItems.forEach((item) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "cart-item";
 
+      const itemName = document.createElement("h2");
+      itemName.textContent = item.name;
 
-  document.write(totalPrice);
+      const itemPrice = document.createElement("p");
+      itemPrice.textContent = `Precio: $${item.price}`;
+
+      const itemQuantity = document.createElement("p");
+      itemQuantity.textContent = `Cantidad: ${item.quantity}`;
+
+      const itemImage = document.createElement("img");
+      itemImage.src = item.image;
+      itemImage.alt = item.name;
+
+      itemDiv.appendChild(itemName);
+      itemDiv.appendChild(itemPrice);
+      itemDiv.appendChild(itemQuantity);
+      itemDiv.appendChild(itemImage);
+
+      cartContainer.appendChild(itemDiv);
+    });
+
+    
+    const totalPrice = cartItems.reduce(function(total, instrument) {
+      return total + (instrument.retail_price*instrument.quantity);
+    },0);
+
+    const priceContainer = document.getElementById("total-price");
+    const itemTotalPrice = document.createElement("h2");
+    itemTotalPrice.textContent = totalPrice;
+    priceContainer.appendChild(itemTotalPrice);
