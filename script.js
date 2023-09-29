@@ -1,12 +1,10 @@
 const promise1 = fetch('instruments1.json').then(response => response.json());
 const promise2 = fetch('instruments2.json').then(response => response.json());
-
-Promise.all([promise1, promise2])
+const promise3 = new Promise(resolve => setTimeout(resolve, 1000));
+Promise.all([promise1, promise2, promise3])
   .then(([data1, data2]) => {
     list1 = data1;
     list2 = data2;
-
-    console.log(list1, list2)
 
     const instruments = list1.concat(list2);
     let arregloSinRepetidos = []
@@ -17,7 +15,34 @@ Promise.all([promise1, promise2])
       }
     });
 
-    console.log(instruments);
+    const instrumentosCaros = arregloSinRepetidos.filter((instrument) => {
+      return instrument.price > 1000;
+    });
+    
+    console.log('-------------------> log con filter: '+instrumentosCaros);
+    console.log(instrumentosCaros);
+
+    const hayInstrumentoCaro = arregloSinRepetidos.some((instrument) => {
+      return instrument.price > 1000;
+    });
+    
+    console.log('-------------------> log con some: ')
+    if (hayInstrumentoCaro) {
+      console.log('-----------------Hay al menos un instrumento caro.');
+    } else {
+      console.log('-----------------No hay instrumentos caros.');
+    }
+
+    const todosCaros = arregloSinRepetidos.every((instrument) => {
+      return instrument.price > 1000;
+    });
+    
+    console.log('-------------------> log con every: ')
+    if (todosCaros) {
+      console.log('-------------------Todos los instrumentos son caros.');
+    } else {
+      console.log('-------------------Al menos un instrumento no es caro.');
+    }
  
     // Escuchar el clic en el botón "Agregar al carrito" en cada tarjeta
     document.addEventListener('click', (event) => {
@@ -61,8 +86,6 @@ Promise.all([promise1, promise2])
     }
 
     renderInstrumentList();
+  }).finally(()=>{ 
+    document.getElementById('spinner').style.display = 'none';
   })
-
-
-
-
