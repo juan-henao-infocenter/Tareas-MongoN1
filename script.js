@@ -1,130 +1,52 @@
-const cartItems = [
-  {
-    name: "Guitarra Acústica",
-    type: "Instrumento de Cuerdas",
-    image: "https://media.istockphoto.com/id/156547833/es/foto/guitarra-ac%C3%BAstica.jpg?s=1024x1024&w=is&k=20&c=nmJYjciohJ-Z7OiyGjOf91bBeV9kQyObZlomf_n_KEg=",
-    id: "abc123",
-    price: 500,
-    retail_price: 800,
-    quantity: 5,
-  },
-  {
-    name: "Guitarra Eléctrica",
-    type: "Instrumento de Cuerdas",
-    image:
-      "https://cdn.pixabay.com/photo/2017/08/06/07/28/guitar-2589863_1280.jpg",
-    id: "def456",
-    price: 700,
-    retail_price: 1200,
-    quantity: 2,
-  },
-  {
-    name: "Batería",
-    type: "Instrumento de Percusión",
-    image: "https://cdn.pixabay.com/photo/2023/01/29/00/16/drums-7751985_1280.jpg",
-    id: "ghi789",
-    price: 1000,
-    retail_price: 1500,
-    quantity: 1,
-  },
-  {
-    name: "Piano",
-    type: "Instrumento de Teclado",
-    image: "https://cdn.pixabay.com/photo/2017/04/04/20/40/instrument-2203044_1280.jpg",
-    id: "jkl012",
-    price: 2000,
-    retail_price: 3000,
-    quantity: 1,
-  },
-  {
-    name: "Violín",
-    type: "Instrumento de Cuerdas",
-    image: "https://cdn.pixabay.com/photo/2017/07/14/21/57/instrument-2505099_1280.jpg",
-    id: "mno345",
-    price: 300,
-    retail_price: 500,
-    quantity: 5,
-  },
-  {
-    name: "Trompeta",
-    type: "Instrumento de Viento Metal",
-    image: "https://cdn.pixabay.com/photo/2011/06/17/15/14/trumpet-7975_1280.jpg",
-    id: "pqr678",
-    price: 400,
-    retail_price: 700,
-    quantity: 3,
-  },
-  {
-    name: "Flauta",
-    type: "Instrumento de Viento Madera",
-    image: "https://cdn.pixabay.com/photo/2020/04/16/13/11/antique-5050542_1280.jpg",
-    id: "stu901",
-    price: 200,
-    retail_price: 400,
-    quantity: 1,
-  },
-  {
-    name: "Saxofón",
-    type: "Instrumento de Viento Madera",
-    image: "https://cdn.pixabay.com/photo/2016/05/24/11/54/saxophone-1412218_1280.jpg",
-    id: "vwx234",
-    price: 800,
-    retail_price: 1300,
-    quantity: 2,
-  },
-  {
-    name: "Clarinete",
-    type: "Instrumento de Viento Madera",
-    image: "https://cdn.pixabay.com/photo/2016/10/16/04/51/music-1744419_1280.jpg",
-    id: "yz0123",
-    price: 400,
-    retail_price: 700,
-    quantity: 2,
-  },
-  {
-    name: "Bajo Eléctrico",
-    type: "Instrumento de Cuerdas",
-    image: "https://cdn.pixabay.com/photo/2021/06/10/12/22/bass-guitar-6325873_1280.jpg",
-    id: "456789",
-    price: 600,
-    retail_price: 1000,
-    quantity: 3,
-  },
-];
+const promise1 = fetch('instruments1.json').then(response => response.json());
+const promise2 = fetch('instruments2.json').then(response => response.json());
 
+Promise.all([promise1, promise2])
+  .then(([data1, data2]) => {
+    list1 = data1;
+    list2 = data2;
 
-// Obtén una referencia a la lista donde se mostrarán los elementos del carrito
-const cartList = document.getElementById("cart-container");
-// Obtén una referencia al elemento donde se mostrará el precio total de todos los productos
-const totalPriceElement = document.getElementById("total-price");
+    console.log(list1, list2)
 
-// Utiliza map() para crear una lista de elementos del carrito
-const cartItemsHTML = cartItems.map((item) => {
-  const unitTotalPrice = item.price * item.quantity;
+    const cartItems = list1.concat(list2);
+    let arregloSinRepetidos = []
 
-  return `
-    <li class="list-group-item">
-      <div class="d-flex flex-row justify-content-start">
-        
-        <div class="col-md-2">
-          <img src="${item.image}" alt="${item.name}" class="img-fluid" style="height: 100px;"/>
+    cartItems.forEach(function (elemento) {
+      if (arregloSinRepetidos.every((e) => e.id != elemento.id)) {
+        arregloSinRepetidos.push(elemento);
+      }
+    });
+
+    console.log(cartItems);
+    // Función para generar una tarjeta para un instrumento
+    function createInstrumentCard(instrument) {
+      return `
+        <div class="col">
+          <div class="card h-100">
+            <img src="${instrument.image}" alt="${instrument.name}" class="card-img-top w-100" style="max-height: 200px;">
+            <div class="card-body">
+              <h5 class="card-title">${instrument.name}</h5>
+              <p class="card-text">Tipo: ${instrument.type}</p>
+              <p class="card-text">Precio: $${instrument.price}</p>
+              <!-- Agregar más detalles aquí, como el botón "Agregar al carrito" -->
+            </div>
+          </div>
         </div>
+      `;
+    }
 
-        <div class="col-md-10 d-flex flex-row justify-content-between">
-          <h5>${item.name}</h5>
-          <p>Precio: $${item.price}</p>
-          <p>Precio Total: $${unitTotalPrice}</p>
-          <p>Cantidad: ${item.quantity}</p>
-        </div>
+    // Función para mostrar la lista de instrumentos en la página
+    function renderInstrumentList() {
+      const instrumentList = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
+      arregloSinRepetidos.forEach((instrument) => {
+        const cardHTML = createInstrumentCard(instrument);
+        instrumentList.innerHTML += cardHTML;
+      });
+    }
+    
+    renderInstrumentList();
+  })
 
-      </div>
-    </li>
-  `;
-});
 
-// Agrega la lista generada al contenedor de la lista del carrito
-cartList.innerHTML = cartItemsHTML.join('');
 
-// Calcula y muestra el precio total de todos los productos
-const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-totalPriceElement.textContent = `$${totalPrice}`;
+

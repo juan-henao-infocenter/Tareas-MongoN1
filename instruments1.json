@@ -1,0 +1,65 @@
+[
+    {
+      "name": "Guitarra Acústica",
+      "type": "Instrumento de Cuerdas",
+      "image": "https://cdn.pixabay.com/photo/2010/12/13/10/01/guitar-2119_1280.jpg",
+      "id": "abc123",
+      "price": 500,
+      "retail_price": 800,
+      "quantity": 5
+    },
+    {
+      "name": "Guitarra Eléctrica",
+      "type": "Instrumento de Cuerdas",
+      "image": "https://cdn.pixabay.com/photo/2017/11/07/00/22/guitar-2925282_1280.jpg",
+      "id": "def456",
+      "price": 700,
+      "retail_price": 1200,
+      "quantity": 2
+    },
+    {
+      "name": "Batería",
+      "type": "Instrumento de Percusión",
+      "image": "https://cdn.pixabay.com/photo/2023/01/29/00/16/drums-7751985_1280.jpg",
+      "id": "ghi789",
+      "price": 1000,
+      "retail_price": 1500,
+      "quantity": 1
+    },
+    {
+      "name": "Piano",
+      "type": "Instrumento de Teclado",
+      "image": "https://cdn.pixabay.com/photo/2017/04/04/20/40/instrument-2203044_1280.jpg",
+      "id": "jkl012",
+      "price": 2000,
+      "retail_price": 3000,
+      "quantity": 1
+    },
+    {
+      "name": "Violín",
+      "type": "Instrumento de Cuerdas",
+      "image": "https://cdn.pixabay.com/photo/2017/07/14/21/57/instrument-2505099_1280.jpg",
+      "id": "mno345",
+      "price": 300,
+      "retail_price": 500,
+      "quantity": 5
+    },
+    {
+      "name": "Trompeta",
+      "type": "Instrumento de Viento Metal",
+      "image": "https://cdn.pixabay.com/photo/2011/06/17/15/14/trumpet-7975_1280.jpg",
+      "id": "pqr678",
+      "price": 400,
+      "retail_price": 700,
+      "quantity": 3
+    },
+    {
+      "name": "Flauta",
+      "type": "Instrumento de Viento Madera",
+      "image": "https://cdn.pixabay.com/photo/2020/04/16/13/11/antique-5050542_1280.jpg",
+      "id": "stu901",
+      "price": 200,
+      "retail_price": 400,
+      "quantity": 1
+    }
+  ]

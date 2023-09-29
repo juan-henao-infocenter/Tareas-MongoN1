@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Violín",
+        "type": "Instrumento de Cuerdas",
+        "image": "https://cdn.pixabay.com/photo/2017/07/14/21/57/instrument-2505099_1280.jpg",
+        "id": "mno345",
+        "price": 300,
+        "retail_price": 500,
+        "quantity": 5
+      },
+      {
+        "name": "Trompeta",
+        "type": "Instrumento de Viento Metal",
+        "image": "https://cdn.pixabay.com/photo/2011/06/17/15/14/trumpet-7975_1280.jpg",
+        "id": "pqr678",
+        "price": 400,
+        "retail_price": 700,
+        "quantity": 3
+      },
+      {
+        "name": "Flauta",
+        "type": "Instrumento de Viento Madera",
+        "image": "https://cdn.pixabay.com/photo/2020/04/16/13/11/antique-5050542_1280.jpg",
+        "id": "stu901",
+        "price": 200,
+        "retail_price": 400,
+        "quantity": 1
+      },
+      {
+        "name": "Saxofón",
+        "type": "Instrumento de Viento Madera",
+        "image": "https://cdn.pixabay.com/photo/2016/05/24/11/54/saxophone-1412218_1280.jpg",
+        "id": "vwx234",
+        "price": 800,
+        "retail_price": 1300,
+        "quantity": 2
+      },
+      {
+        "name": "Clarinete",
+        "type": "Instrumento de Viento Madera",
+        "image": "https://cdn.pixabay.com/photo/2016/10/16/04/51/music-1744419_1280.jpg",
+        "id": "yz0123",
+        "price": 400,
+        "retail_price": 700,
+        "quantity": 2
+      },
+      {
+        "name": "Bajo Eléctrico",
+        "type": "Instrumento de Cuerdas",
+        "image": "https://cdn.pixabay.com/photo/2021/06/10/12/22/bass-guitar-6325873_1280.jpg",
+        "id": "456789",
+        "price": 600,
+        "retail_price": 1000,
+        "quantity": 3
+      }
+]
