@@ -1,6 +1,6 @@
 const promise1 = fetch('instruments1.json').then(response => response.json());
 const promise2 = fetch('instruments2.json').then(response => response.json());
-const promise3 = new Promise(resolve => setTimeout(resolve, 1000));
+const promise3 = new Promise(resolve => setTimeout(resolve, 1500));
 Promise.all([promise1, promise2, promise3])
   .then(([data1, data2]) => {
     list1 = data1;
