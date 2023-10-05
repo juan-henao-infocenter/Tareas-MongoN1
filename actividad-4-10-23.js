@@ -51,7 +51,12 @@ const getNestedRecordsExample = () => [
 
 const totalMaticulas = `<h2>${getNestedRecordsExample().reduce((total, item) => total + item.detalles.valorMatricula, 0)}</h2>`;
 const telefonos = [];
-getNestedRecordsExample().forEach((e)=> telefonos.push(`<h2>${e.detalles.contacto.telefono}</h2>`));
+getNestedRecordsExample().forEach((e)=>
+{
+    telefonos.push(`<li><h2>${e.detalles.contacto.telefono}</h2></li>`)
+} );
+    
+console.log(telefonos);
 const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGrande, estudianteActual) => {
     if (estudianteActual.detalles.valorMatricula > estudianteMasGrande.detalles.valorMatricula) {
       return estudianteActual;
@@ -60,6 +65,8 @@ const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGr
     }
   }, getNestedRecordsExample()[0]); 
 
+telefonosText = telefonos.reduce((c,e) => c + e, '');
 
+console.log(telefonosText);
 
-document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', telefonos, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre} ${estudianteMatriculaMax.detalles.contacto.email}</h2>`);
+document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre} ${estudianteMatriculaMax.detalles.contacto.email}</h2>`);
