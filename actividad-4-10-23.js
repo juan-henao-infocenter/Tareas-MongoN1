@@ -62,4 +62,4 @@ const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGr
 
 
 
-document.write('<h1>Actividad Octubre 4, 2023</h1>',totalMaticulas, '<h1>Telefonos</h1>', telefonos, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre} ${estudianteMatriculaMax.detalles.contacto.email}</h2>`);
+document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', telefonos, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre} ${estudianteMatriculaMax.detalles.contacto.email}</h2>`);
