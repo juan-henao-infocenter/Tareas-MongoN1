@@ -51,24 +51,23 @@ const getNestedRecordsExample = () => [
 
 const totalMaticulas = `<h2>${getNestedRecordsExample().reduce((total, item) => total + item.detalles.valorMatricula, 0)}</h2>`;
 const telefonos = [];
-getNestedRecordsExample().forEach((e)=>
-{
+getNestedRecordsExample().forEach((e) => {
     telefonos.push(`<li><h2>${e.detalles.contacto.telefono}</h2></li>`)
-} );
-telefonosText = telefonos.reduce((c,e) => c + e, '');
-    
+});
+telefonosText = telefonos.reduce((c, e) => c + e, '');
+
 console.log(telefonos);
 const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGrande, estudianteActual) => {
     if (estudianteActual.detalles.valorMatricula > estudianteMasGrande.detalles.valorMatricula) {
-      return estudianteActual;
+        return estudianteActual;
     } else {
-      return estudianteMasGrande;
+        return estudianteMasGrande;
     }
-  }, getNestedRecordsExample()[0]); 
+}, getNestedRecordsExample()[0]);
 
-  const estudiantesMatriculaCondicional = getNestedRecordsExample().filter((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional'); 
+const estudiantesMatriculaCondicional = getNestedRecordsExample().filter((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional');
 
-  const estidiantesMatriculaCondicionalText = estudiantesMatriculaCondicional.map(e=> `<li><h2>${e.detalles.contacto.email}</h2></li>`)
+const estidiantesMatriculaCondicionalText = estudiantesMatriculaCondicional.map(e => `<li><h2>${e.detalles.contacto.email}</h2></li>`)
 console.log(estudiantesMatriculaCondicional);
 
-document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional[0].detalles.contacto.email}</h2>`, '<h1>estudiantes matricula condicional</h1>', `<ul>${estidiantesMatriculaCondicionalText}</ul>`);
+document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>', totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional.length > 0 ? estudiantesMatriculaCondicional[0].detalles.contacto.email : "No hay estudiantes con matricula condicional"}</h2>`, '<h1>estudiantes matricula condicional</h1>', `<ul>${estidiantesMatriculaCondicionalText}</ul>`);
