@@ -66,8 +66,8 @@ const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGr
     }
   }, getNestedRecordsExample()[0]); 
 
-  const estudiantesMatriculaCondicional = getNestedRecordsExample().filter((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional'); 
+  const estudiantesMatriculaCondicional = getNestedRecordsExample().find((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional'); 
 
 console.log(estudiantesMatriculaCondicional);
 
-document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional[0].detalles.contacto.email}</h2>`);
+document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional.detalles.contacto.email}</h2>`);
