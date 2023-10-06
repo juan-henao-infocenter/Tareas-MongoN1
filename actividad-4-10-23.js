@@ -27,7 +27,7 @@ const getNestedRecordsExample = () => [
         id: 3,
         nombre: 'Juan Yarce',
         detalles: {
-            descripcion: 'matricula normal',
+            descripcion: 'matricula condicional',
             contacto: {
                 email: 'jyarce@mail.com',
                 telefono: 1122334455
@@ -66,8 +66,9 @@ const estudianteMatriculaMax = getNestedRecordsExample().reduce((estudianteMasGr
     }
   }, getNestedRecordsExample()[0]); 
 
-  const estudiantesMatriculaCondicional = getNestedRecordsExample().find((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional'); 
+  const estudiantesMatriculaCondicional = getNestedRecordsExample().filter((estudianteActual) => estudianteActual.detalles.descripcion === 'matricula condicional'); 
 
+  const estidiantesMatriculaCondicionalText = estudiantesMatriculaCondicional.map(e=> `<li><h2>${e.detalles.contacto.email}</h2></li>`)
 console.log(estudiantesMatriculaCondicional);
 
-document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional.detalles.contacto.email}</h2>`);
+document.write('<h1>Actividad Octubre 4, 2023</h1>', '<h1>Total matriculas</h1>',totalMaticulas, '<h1>Telefonos</h1>', `<ul>${telefonosText}</ul>`, '<h1>Estudiante matricula mas grande</h1>', `<h2>${estudianteMatriculaMax.nombre}</h2>`, '<h1>Estudiante matricula Condicional</h1>', `<h2>${estudiantesMatriculaCondicional[0].detalles.contacto.email}</h2>`, '<h1>estudiantes matricula condicional</h1>', `<ul>${estidiantesMatriculaCondicionalText}</ul>`);
